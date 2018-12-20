@@ -1,0 +1,28 @@
+<div class="container">
+
+  <app-header (valorSeleccionado)="onNavigate($event)"></app-header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <app-recipes *ngIf="valorCargado === 'receta'"> </app-recipes>
+        <app-shopping-list *ngIf="valorCargado !== 'receta'"></app-shopping-list>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<hr>
+
+<app-cockpit 
+  (serverCreated)="onServerAdded($event)"
+  (blueprintCreated)="onBlueprintAdded($event)"
+  ></app-cockpit>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-server-element 
+      *ngFor="let serverElement of serverElements"
+       [srvElement]="serverElement"></app-server-element>
+  </div>
+</div>
+-->
