@@ -1,4 +1,8 @@
-<a href="#" class="list-group-item clearfix">
+<a 
+    style= "cursor: pointer"
+    [routerLink]="[index]"
+    routerLinkActive="active"
+    class="list-group-item clearfix">
   <div class="pull-left">
       <h4 class="list-group-item-heading">{{receta.nombre}}</h4>
       <p class="list-group-item-heading">{{receta.descripcion}}</p>
@@ -6,6 +10,8 @@
   <span class="pull-right">
       <img
            [src]="receta.imagePath" 
-           alt="{{receta.nombre}}" class="img-responsive" style="max-height: 50px;">
+           alt="{{receta.nombre}}" 
+           class="img-responsive"
+           style="max-height: 50px;">
   </span>
 </a>

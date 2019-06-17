@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+             type="submit"
+             class="btn btn-success"
+             [disabled] = "!recipeForm.valid">Guardar</button>
+          <button type="submit" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input
+                 type="text"
+                 id="nombre"
+                 formControlName="nombre"
+                 class="form-control"
+                 #rutaImagen>
+            </div>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Url Imagen</label>
+            <input
+               type="text"
+               id="imagePath"
+               formControlName="imagePath"
+               class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="rutaImagen.value" class="img-responsive">
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="descripcion">Descripcion</label>
+              <textarea
+                 type="text"
+                 id="descripcion"
+                 formControlName="descripcion"
+                 class="form-control"
+                 row="6"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12" formArrayName="ingredientes">
+              <div 
+                  class="row" 
+                  *ngFor="let ingredienteCtrl of getControls(); let i = index"
+                  [formGroupName]="i"
+                  style="margin-top: 10px; " >  <!-- formGroup es cada par de valores (nombre,cantidad) -->
+                <div class="col-xs-8"> 
+                    <input
+                    type="text"                   
+                    class="form-control"
+                    formControlName="nombre">
+                </div>
+                <div class="col-xs-2">
+                      <input
+                      type="number"                   
+                      class="form-control"
+                      formControlName="cantidad">
+                </div>
+                <div class="col-xs-2">
+                  <button 
+                    class="btn btn-danger"
+                    (click)="onDeleteIngrediente(i)">X</button>
+                </div>        
+               </div>
+               <hr>
+               <div class="row col-xs-12">
+                 <button type="button" class="btn btn-success" (click)="onAgregarIngrediente()">Agregar ingrediente</button>
+               </div>
+            </div>
+          </div>
+    </form>
+  </div>
+</div>
